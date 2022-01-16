@@ -1,6 +1,6 @@
 // This repo is optional extra practice to use the underscore functions.
-// Here we'll be writing new functions, but these functions will use 
-// the underscore functions within them. 
+// Here we'll be writing new functions, but these functions will use
+// the underscore functions within them.
 
 /*
  *
@@ -8,20 +8,61 @@
  *
  */
 
+// I - array (fruits);
+// O - copy of input array (results);
+// C - No use of native functions, return new array, no f loops
+// E - N/A
+
 // use _.each to create a copy of the given array.
 var moreFruits = function(fruits) {
+
+  //create result array
   var results = [];
 
+  //invoke each with input from moreFruits plus iterator function taking
+  // inputs of fruit, index, collection
   _.each(fruits, function(fruit, index, collection) {
+
+    //on each iteration, push current element of fruits array to results array
     results.push(fruit);
+
   });
 
+  //return results array
   return results;
+
 };
+
+// I - array (numbers);
+// O - numeric value reflecting how many elements in numbers array are
+// multiples of 5
+// C - no native methods, no f - loops
+// E - N/A
 
 // use _.each to traverse the number array and determine
 // which are multiples of five.
 var multiplesOfFive = function(numbers) {
+
+  console.log(numbers);
+
+  //create countOfMultiples var set to empty array
+  var countOfMultiples = 0;
+
+  //invoke each(numbers, function(number, index, collection){}
+  _.each(numbers, function(item, index, collection) {
+
+    //if numbers[index] divided by number is an integer
+    if (Number.isInteger(item / 5)) {
+
+      countOfMultiples++;
+
+    }
+
+
+  });
+
+  //return results
+  return countOfMultiples;
 
 };
 
@@ -55,7 +96,7 @@ var cookiesOnly = function(desserts) {
 
 // return the total price of all products.
 var sumTotal = function(products) {
-  
+
 };
 
 // return an object consisting of dessert types and how many of each.
@@ -68,7 +109,7 @@ var dessertCategories = function(desserts) {
 // movies that came out between 1990 and 2000.
 // TIP: use an array as your accumulator - don't push to an external array!
 var ninetiesKid = function(movies) {
-  
+
 };
 
 // return an boolean stating if there exists a movie with a shorter
@@ -102,7 +143,7 @@ var glutenFree = function(desserts) {
 //
 // having trouble with decimals? check out this article:
 // http://adripofjavascript.com/blog/drips/avoiding-problems-with-decimal-math-in-javascript.html
-// 
+//
 /*
 
  example output:
@@ -111,7 +152,7 @@ var glutenFree = function(desserts) {
     {
       id: 1,
       product: 'Olive Oil',
-      price: '$12.1', 
+      price: '$12.1',
       salePrice: '$9.61'
     }
   ];
