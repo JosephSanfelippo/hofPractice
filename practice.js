@@ -93,6 +93,14 @@ var onlyOneFruit = function(fruits, targetFruit) {
 // starting with the letter 'P'.
 var startsWith = function(fruits, letter) {
 
+  var withLetterP = _.filter(fruits, function(fruit) {
+
+    return fruit[0] === letter;
+
+  });
+
+  return withLetterP;
+
 };
 
 // return a filtered array containing only cookie-type desserts.
