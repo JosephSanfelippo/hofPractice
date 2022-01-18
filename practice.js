@@ -305,7 +305,8 @@ var glutenFree = function(desserts) {
   //create celiacSafe var set to result of _.map running
   var celiacSafe = _.map(desserts, function(dessert, index, desserts) {
 
-    //add glutenFree property to current object in invocation set tresult of _.contains running with inputs of ingredients list and 'flour'
+    //add glutenFree property to current object in invocation set tresult
+    // of _.contains running with inputs of ingredients list and 'flour'
     dessert.glutenFree = !_.contains(dessert.ingredients, 'flour');
 
     //return dessert
@@ -317,6 +318,11 @@ var glutenFree = function(desserts) {
   return celiacSafe;
 
 };
+
+// I - array of objects(groceries); numeric decimal value (salePrice)
+// O - array of objects including new sale price property/value
+// C - No use of native _.map func, no fr loop, return only array from map
+// E - n/a
 
 // use _.map to return an array of items with their sale prices, with a new property
 // containing the sale price. round any decimals to 2 places.
@@ -339,5 +345,35 @@ var glutenFree = function(desserts) {
 
 */
 var applyCoupon = function(groceries, coupon) {
+
+  //create salePrices var set to result of _.map running with inputs
+  //(groceries, function(product, index, groceries))
+  var salePrices = _.map(groceries, function(product, index, groceries) {
+
+    //create productPrice var set to value at price prop in product obj
+    var productPrice = product.price;
+
+    //create slice var set to productPrice sliced at index 1
+    var slice = productPrice.slice(1);
+
+    //create priceNumber var set to value of slice converted to number
+    var priceNumber = Number(slice);
+
+    //create numericSalePrice var set to sale price calculatiohn
+    var numericSalePrice = parseFloat(priceNumber - (priceNumber * coupon)).toFixed(2);
+
+    //convert numericSalePrice back to string, add $ to beginning
+    var stringSalePrice = '$' + numericSalePrice.toString();
+
+    //add salePrice prop to product obj and assign to stringSalePrice val
+    product.salePrice = stringSalePrice;
+
+    //return product obj
+    return product;
+
+  });
+
+  //return salePrices
+  return salePrices;
 
 };
