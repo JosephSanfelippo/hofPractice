@@ -122,14 +122,67 @@ var cookiesOnly = function(desserts) {
  *
  */
 
+// I - array of objects (products)
+// 0 - numeric value representing sum total of prices of all products
+// C - No fr loop or native methods
+// E - N/A
+
 // return the total price of all products.
 var sumTotal = function(products) {
+
+  //ccreate totalPrice var set to result of _.reduce running
+  var totalPrice = _.reduce(products, function(memo, product, index, products) {
+
+    var productPrice = products[index].price;
+
+    var slice = productPrice.slice(1);
+
+    var priceNumber = Number(slice);
+
+    console.log(memo, priceNumber, memo + priceNumber);
+
+    //add price value of current object in products list to memo
+    return memo + priceNumber;
+
+
+  }, 0);
+
+  //return totalPrice
+  return totalPrice;
 
 };
 
 // return an object consisting of dessert types and how many of each.
 // exampleOutput: { dessertType: 3, dessertType2: 1 }
 var dessertCategories = function(desserts) {
+
+  //create result object
+  var typesOfDessert = {};
+
+  //create desertTypes var set to result of _.reduce running
+  var dessertTypes = _.reduce(desserts, function(memo, dessert, index, desserts) {
+
+    //create type var set to value at type property in current obj in input array
+    var type = desserts[index]['type'];
+
+    //if desert type doesnt exist as property in result object
+    if (typesOfDessert[type] === undefined) {
+
+      //create property of dessert type in result obj with value of 1
+      typesOfDessert[type] = 1;
+
+    //otherwise
+    } else {
+
+      //increment value at property by 1
+      typesOfDessert[type]++;
+
+    }
+
+  }, 0);
+
+  //return result object
+  return typesOfDessert;
 
 };
 
