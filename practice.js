@@ -139,8 +139,6 @@ var sumTotal = function(products) {
 
     var priceNumber = Number(slice);
 
-    console.log(memo, priceNumber, memo + priceNumber);
-
     //add price value of current object in products list to memo
     return memo + priceNumber;
 
@@ -229,10 +227,40 @@ var ninetiesKid = function(movies) {
 
 };
 
+// I - array of objects (movies); number representing time limit in minutes
+// O - boolean stating if there exists a movie with shorter runtime than tl
+// C - No native reduce methods, no fr loop, create new array
+// E - N/A
+
 // return an boolean stating if there exists a movie with a shorter
 // runtime than your time limit.
 // timeLimit is an integer representing a number of minutes.
 var movieNight = function(movies, timeLimit) {
+
+  //create meetsLengthRequirement var set to boolean value of false
+  var meetsLengthRequirement = false;
+
+  //create canWatch var set to result of _.reduce running
+  var canWatch = _.reduce(movies, function(memo, item, index, movies) {
+
+    //create runTime var set to value at runtime property in current object in movie list
+    var runTime = movies[index].runtime;
+
+    //if runTime is less than or equal to time limit
+    if (runTime <= timeLimit) {
+
+      //meetsLengthRequirement reassigned to true
+      meetsLengthRequirement = true;
+
+      //return meetsLengthRequirement (true case)
+      return meetsLengthRequirement;
+
+    }
+
+  }, false);
+
+  //return meetsLengthRequirement (false case)
+  return meetsLengthRequirement;
 
 };
 
