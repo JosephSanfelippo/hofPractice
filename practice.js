@@ -292,10 +292,29 @@ var upperCaseFruits = function(fruits) {
 
 };
 
+// I - array of objects (desserts)
+// O - array of ojbects containing new glutenFree property with boolean val
+// C - no native _.map methods, no fr loop, use new array from _.map
+// E - n/a
+
 // given an array of dessert objects, return a new array of objects
 // that have a new "glutenFree" property, with a boolean value.
 // TIP: Items that contain flour are not gluten-free.
 var glutenFree = function(desserts) {
+
+  //create celiacSafe var set to result of _.map running
+  var celiacSafe = _.map(desserts, function(dessert, index, desserts) {
+
+    //add glutenFree property to current object in invocation set tresult of _.contains running with inputs of ingredients list and 'flour'
+    dessert.glutenFree = !_.contains(dessert.ingredients, 'flour');
+
+    //return dessert
+    return dessert;
+
+  });
+
+  //return celiacSafe
+  return celiacSafe;
 
 };
 
