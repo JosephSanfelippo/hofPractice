@@ -152,6 +152,12 @@ var sumTotal = function(products) {
 
 };
 
+// I - array of objects (desserts)
+// O - result object listing each dessert type and the number of times it
+// appears in input collection
+// C - No fr loop, no use of native _.reduce methods
+// E - N/A
+
 // return an object consisting of dessert types and how many of each.
 // exampleOutput: { dessertType: 3, dessertType2: 1 }
 var dessertCategories = function(desserts) {
@@ -186,10 +192,40 @@ var dessertCategories = function(desserts) {
 
 };
 
+// I - array of objects (movies)
+// O - New array containing movies released between 1990 and 2000
+// C - No native _.reduce methods, no fr loops, return new array
+// E - N/A
+
 // given an array of movie data objects,return an array containing
 // movies that came out between 1990 and 2000.
 // TIP: use an array as your accumulator - don't push to an external array!
 var ninetiesKid = function(movies) {
+
+  //create ninetiesMovies var set to empty array
+  var ninetiesMovies = [];
+
+  //create releaseDates var set to result of _.reduce running
+  var resleaseDates = _.reduce(movies, function(memo, value, index, movies) {
+
+    //create releaseDate var set to value at release year property in current object in array
+    var releaseDate = movies[index].releaseYear;
+
+    //create movieTitle var set to value at title property in current object in array
+    var movieTitle = movies[index].title;
+
+    //if release date is between 1990 and 2000 (inclusive)
+    if (releaseDate >= 1990 && releaseDate <= 2000) {
+
+      //push title of movie to ninetiesMovies array
+      ninetiesMovies.push(movieTitle);
+
+    }
+
+  }, 0);
+
+  //return ninetiesmovies array
+  return ninetiesMovies;
 
 };
 
