@@ -270,9 +270,25 @@ var movieNight = function(movies, timeLimit) {
  *
  */
 
+// I - array of strings (fruits);
+// O - array containing all strings converted to uppercase
+// C - no native _.map functions, no fr loops, dont create new array
+// E - n/a
+
 // given an array of strings, use _.map to return a new array containing all
 // strings converted to uppercase letters.
 var upperCaseFruits = function(fruits) {
+
+  //create conversion var set to result of _.map running
+  var conversion = _.map(fruits, function(fruit, index, fruits) {
+
+    //return fruit converted to uppercase
+    return fruit.toUpperCase();
+
+  });
+
+  //return upperCase array
+  return conversion;
 
 };
 
